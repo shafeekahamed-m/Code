@@ -1,5 +1,19 @@
 # `hahn-ui`
 
+Thank you for the opportunity to work on this wonderful and challenging new technology-(Aurelia), I had great learning curve over the past couple of days and hope I fulfilled your requirement to the best of my knowledge.
+
+Kindly do a download zip file from github, 
+
+Extract all the files and if you hare using VS code ide as I have used in this project, go to terminal 
+
+npm install
+
+npm start 
+
+and you should be able to see the UI running in http://localhost:8080/#/
+
+# thank you
+
 This project is bootstrapped by [aurelia-cli](https://github.com/aurelia/cli).
 
 For more information, go to https://aurelia.io/docs/cli/webpack
