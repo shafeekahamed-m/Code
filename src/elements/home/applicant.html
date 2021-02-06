@@ -1,0 +1,62 @@
+<template>
+    <require from="bootstrap/dist/css/bootstrap.css"></require>
+    <div class="margin-top-page">
+      <h2 i18n="[html]addoreditapplicant" class="margin-btm-card">Add/Edit Applicant</h2>
+      <div>
+      <div class="container">
+          <div >
+            <form class="needs-validation"  submit.trigger="addApplicant()" >
+              <div class="form-group" validation-errors.bind="NameInputErrors"
+                class.bind="NameInputErrors.length ? 'has-error' : ''">
+                <label for="firstName" i18n="[html]name">Name</label>
+                <input type="text" i18n="[placeholder,aria-placeholder]nameplaceholder" 
+                class="form-control ${NameInputErrors.length>0 ? 'form-invalid' : ''}" id="firstName" 
+                change.delegate="selectedValueInViewChanged()" placeholder="Enter Name(minimum 5 characters)"
+                  value.bind="NameInput & validate">
+              </div>
+              <div class="form-group" validation-errors.bind="FamilyNameInputErrors"
+                class.bind="FamilyNameInputErrors.length ? 'has-error' : ''"> 
+                <label for="firstName" i18n="[html]familyName">Family Name</label>
+                <input type="text" class="form-control ${FamilyNameInputErrors.length>0 ? 'form-invalid' : ''}" 
+                id="firstName" change.delegate="selectedValueInViewChanged()" placeholder="Enter Family Name(minimum 5 characters)"
+                  value.bind="FamilyNameInput & validate" i18n="[placeholder,aria-placeholder]familyNameplaceholder">
+              </div>
+              <div class="form-group" validation-errors.bind="AddressInputErrors"
+              class.bind="AddressInputErrors.length ? 'has-error' : ''">
+                <label for="exampleInputAddress" i18n="[html]address">Address</label>
+                <input type="text" value.bind="AddressInput & validate" class="form-control ${AddressInputErrors.length>0 ? 'form-invalid' : ''}" change.delegate="selectedValueInViewChanged()" id="exampleInputAddress"
+                  aria-describedby="Address" placeholder="Enter Address(minimum 10 characters)" i18n="[placeholder,aria-placeholder]addressplaceholder">
+              </div>
+              <div class="form-group" validation-errors.bind="CountryOfOriginInputErrors"
+              class.bind="CountryOfOriginInputErrors.length ? 'has-error' : ''">
+                <label for="exampleInputCountryOfOrigin" i18n="[html]countryOfOrigin">Country Of Origin</label>
+                <input type="text" value.bind="CountryOfOriginInput & validate" class="form-control ${CountryOfOriginInputErrors.length>0 ? 'form-invalid' : ''}" change.delegate="selectedValueInViewChanged()" id="exampleInputCountryOfOrigin"
+                  aria-describedby="exampleInputCountryOfOrigin" placeholder="Enter Country Of Origin(minimum 5 characters)" i18n="[placeholder,aria-placeholder]countryOfOriginplaceholder">
+              </div>
+              <div class="form-group" validation-errors.bind="AgeInputErrors"
+              class.bind="AgeInputErrors.length ? 'has-error' : ''">
+                <label for="exampleInputAge" i18n="[html]age">Age</label>
+                <input type="number" value.bind="AgeInput & validate" class="form-control ${AgeInputErrors.length>0 ? 'form-invalid' : ''}" change.delegate="selectedValueInViewChanged()" id="exampleInputAge"
+                  aria-describedby="exampleInputAge" placeholder="Enter age(between 20 and 60)" i18n="[placeholder,aria-placeholder]ageplaceholder">
+              </div>
+              <div class="form-group" validation-errors.bind="EMailAddressInputErrors"
+              class.bind="EMailAddressInputErrors.length ? 'has-error' : ''">
+                <label for="exampleInputEmail1" i18n="[html]eMailAddress">Email address</label>
+                <input type="email" value.bind="EMailAddressInput & validate" 
+                class="form-control ${EMailAddressInputErrors.length>0 ? 'form-invalid' : ''}" change.delegate="selectedValueInViewChanged()" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="Enter email" i18n="[placeholder,aria-placeholder]eMailAddressplaceholder">
+              </div>
+              <div class="form-check">
+                <label class="form-check-label" >
+                  <input type="checkbox" checked.bind="HiredInput" class="form-check-input">
+                  Hired
+                </label>
+              </div>
+              <button type="submit" disabled.bind ="DisableSubmit" class="btn btn-primary" i18n="[html]submit">Submit</button>
+              <button type="button" 
+              disabled.bind ="!NameInput&&!FamilyNameInput&&!AddressInput&&!CountryOfOriginInput&&!EMailAddressInput&&!AgeInput" 
+              class="btn btn-primary" click.trigger="resetFields()" i18n="[html]reset">Reset</button>
+            </form>
+          </div>
+    </div>
+    </template>

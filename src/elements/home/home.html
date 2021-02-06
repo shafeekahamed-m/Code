@@ -1,0 +1,39 @@
+<template >
+  <div class="margin-top-page">
+    <h2 i18n="[html]dashboard" class="margin-btm-card">Dashboard </h2>
+    <div class="alert alert-success alert-dismissible fade ${DeleteSuccess ? 'show' : 'hide'} " role="alert" >
+      <strong>Success!</strong> The Applicant entry is deleted, you can add a new entry by clicking <a class="" route-href="route: applicant; params.bind:{new:'new'}">here</a>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-success alert-dismissible fade ${AddSuccess ? 'show' : 'hide'} " role="alert" >
+      <strong>Success!</strong> The Applicant entry is added/saved as per submission.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-error alert-dismissible fade ${GenericError ? 'show' : 'hide'} " role="alert">
+      <strong>Error!</strong> Some Error Occurred, please try again after sometime.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div repeat.for="todo of checkinglist">
+      <div class="card-deck margin-btm-card" >
+        <div class="card border-info text-center">
+            <div class="card-header">${todo.name} , ${todo.age}</div>
+            <div class="card-body text-info">
+              <h5 class="card-title">${todo.eMailAddress}</h5>
+              <p class="card-text">
+                With Family Name - ${todo.familyName} from ${todo.address},${todo.countryOfOrigin} is ${todo.hired?"Hired":"not hired"}
+              </p>
+              <button class="btn btn-primary marging-right-btn" click.trigger="EditApplicant($event.target.value)" value="${todo.id}" i18n="[html]edit">Edit</a>
+              <button class="btn btn-secondary" click.trigger="DeleteApplicant($event.target.value)" value="${todo.id}" i18n="[html]delete">Delete</a>
+            </div>
+            <div class="card-footer text-muted">${todo.lastUpdated}</div>
+          </div>
+      </div>
+    </div>
+  </div>
+</template>
